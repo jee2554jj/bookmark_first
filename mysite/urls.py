@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+"""
 from django.conf.urls import url
 from django.contrib import admin
 
@@ -25,4 +27,14 @@ urlpatterns = [
     url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
     # /bookmark/숫자/ 요청을 처리할 뷰 클래스를 BookmarkDV로 지정하고, URL 패턴 이름 지정
     url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
+]
+"""
+
+
+from django.conf.urls import url, include # include('bookmark.urls') 함수
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('bookmark.urls')),     # 원래 있던 내용을 모두 bookmark/urls.py 파일로 옮기자.
 ]
